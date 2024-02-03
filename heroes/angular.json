@@ -28,12 +28,7 @@
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -100,6 +95,6 @@
     }
   },
   "cli": {
-    "analytics": "0482b538-03cd-442d-8fc8-f7c1dd9f9521"
+    "analytics": "34a20ad7-44bf-44d3-952f-d69df0371a87"
   }
 }
