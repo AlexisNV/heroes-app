@@ -1,0 +1,78 @@
+<mat-drawer-container class="full-height" [hasBackdrop]="true">
+    <mat-drawer class="drawer" #drawer mode="over" position="end">
+        <app-heroes-detail [hero]="selectedHero" (onDelete)="openDeleteDialog($event)"></app-heroes-detail>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="drawer-container">
+            <h1>Listado de Héroes</h1>
+            <mat-divider></mat-divider>
+            <div class="action-buttons">
+                <button mat-fab color="accent" [routerLink]="['/heroes-form']">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <mat-form-field>
+                <mat-label>Filtro</mat-label>
+                <input
+                    matInput
+                    (keyup)="applyFilter($event)"
+                    placeholder="Puedes buscar por: id, nombre, edad e incluso poderes"
+                    #input
+                />
+            </mat-form-field>
+
+            <div class="mat-elevation-z8">
+                <mat-table [dataSource]="heroesSource" class="mat-elevation-z8">
+                    <!-- Columna de ID -->
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                        <mat-cell mat-cell *matCellDef="let hero">{{ hero.id }}</mat-cell>
+                    </ng-container>
+
+                    <!-- Columna de nombre -->
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+                        <mat-cell mat-cell *matCellDef="let hero">{{ hero.name }}</mat-cell>
+                    </ng-container>
+
+                    <!-- Columna de edad -->
+                    <ng-container matColumnDef="age">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef>Edad</mat-header-cell>
+                        <mat-cell mat-cell *matCellDef="let hero">{{ hero.age }}</mat-cell>
+                    </ng-container>
+
+                    <!-- Columna de poderes -->
+                    <ng-container matColumnDef="powers">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef>Poderes</mat-header-cell>
+                        <mat-cell mat-cell *matCellDef="let hero">{{ hero.powers | separateData }}</mat-cell>
+                    </ng-container>
+
+                    <!-- Columba de las acciones -->
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell mat-cell *matCellDef="let hero">
+                            <button mat-mini-fab color="primary" (click)="openDeleteDialog(hero, $event)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            <button
+                                class="default-margin-left"
+                                mat-mini-fab
+                                color="warn"
+                                [routerLink]="['/heroes-form/' + hero.id]"
+                            >
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Definición de las columnas -->
+                    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+                    <mat-row matRipple (click)="showDetails(row.id)" *matRowDef="let row; columns: columns"></mat-row>
+                </mat-table>
+
+                <!-- Paginación -->
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>
