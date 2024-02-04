@@ -1,0 +1,14 @@
+<div *ngIf="hero" class="container">
+    <mat-card>
+        <mat-card-content class="flex-container">
+            <span>Nombre: {{ hero.name }}</span>
+            <span>Edad: {{ hero.age }}</span>
+            <span>Poderes: {{ hero.powers | separateData }}</span>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-mini-fab color="primary" (click)="deleteHero(hero)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
