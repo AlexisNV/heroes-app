@@ -4,5 +4,6 @@ import { HeroesListComponent } from "./components/heroes-list/heroes-list.compon
 
 export const routes: Routes = [
     { path: "", component: HeroesListComponent },
+    { path: "heroes-form/:id", component: HeroesFormComponent },
     { path: "heroes-form", component: HeroesFormComponent },
 ];
