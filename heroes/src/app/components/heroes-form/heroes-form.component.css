@@ -1,0 +1,29 @@
+.container {
+    padding: 5%;
+    color: white;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.powers-field-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.powers-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.default-margin-left {
+    margin-left: 10px;
+}
+
+mat-form-field {
+    width: 400px;
+}

@@ -1,0 +1,50 @@
+<div class="container">
+    <mat-card>
+        <mat-card-header
+            ><h1>{{ hero ? "Edición de " + hero.name : "Creación de un heroe" }}</h1></mat-card-header
+        >
+        <mat-card-content>
+            <form [formGroup]="heroForm" class="flex-container">
+                <mat-form-field>
+                    <mat-label for="id">ID:</mat-label>
+                    <input matInput type="number" id="id" formControlName="id" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label for="name">Nombre:</mat-label>
+                    <input appUpperCase matInput type="text" id="name" formControlName="name" />
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label for="age">Edad:</mat-label>
+                    <input matInput type="number" id="age" formControlName="age" />
+                </mat-form-field>
+                <div formArrayName="powers" class="powers-field-container">
+                    <div class="powers-fields">
+                        <mat-form-field *ngFor="let power of powers.controls; let i = index">
+                            <mat-label for="power">Poder {{ i + 1 }}:</mat-label>
+                            <input matInput type="text" [id]="'power' + i" [formControlName]="i" />
+                            <button mat-icon-button matSuffix type="button" (click)="removePower(i)">
+                                <mat-icon> delete </mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <button
+                        mat-button
+                        type="button"
+                        [ngClass]="{
+                            'default-margin-left': powers.controls && powers.controls.length > 0
+                        }"
+                        (click)="addPower()"
+                    >
+                        Añadir Poder
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button [routerLink]="['']">Volver</button>
+            <button mat-flat-button color="accent" type="submit" (click)="onSubmit()" [disabled]="heroForm.invalid">
+                {{ hero ? "Editar" : "Guardar" }}
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
