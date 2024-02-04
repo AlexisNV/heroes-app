@@ -1,0 +1,29 @@
+.full-height {
+    height: 100%;
+}
+
+.drawer-container {
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.action-buttons {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.drawer {
+    width: 500px;
+    background-color: rgb(50, 50, 50);
+    overflow: hidden;
+}
+
+.default-margin-left {
+    margin-left: 10px;
+}
