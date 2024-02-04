@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>¿Estás seguro de eliminar a {{ data.name }}?</h2>
+
+<mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button (click)="onDelete()" cdkFocusInitial>Borrar</button>
+</mat-dialog-actions>
